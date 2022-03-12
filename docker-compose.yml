@@ -1,0 +1,32 @@
+# This is the main configuration file for the project
+# Here we declare all the important things like database and other configurations
+# Here we mention whether we want to work with database or maybe you want to run the server etc.
+#So we have to mention all the required configuration here. This will simply follow the steps.
+#This will start your container and link your container etc.
+
+
+#mentioning version number for the docker
+version: '3'
+
+#mention all the services you want to run
+services:
+  web:                                                  #using web service for this project
+    build: .                                            #give the build path. for this project we use . which is current path
+    command: python manage.py runserver 0.0.0.0:8001    #giving instruction to run server in port 8001 and 0.0.0.0 to acees it from anywhere
+    volumes:                                            #declaring volumes to prevent dataloss while deleting the container
+      - .:/app
+    ports:
+        - "8001:8001"
+
+
+#Now open the terminal and create a django project. 
+#use command sudo docker-compose run web django-admin startproject test1 .
+#use docker-compose up to run the docker container
+#check in 127.0.0.1:8001
+
+
+
+
+
+
+
